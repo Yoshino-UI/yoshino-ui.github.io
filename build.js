@@ -381,9 +381,9 @@ exports.default = Avatar_1.default;
 
 /***/ }),
 
-/***/ "./components/BackTop/Backtop.tsx":
+/***/ "./components/Backtop/Backtop.tsx":
 /*!****************************************!*\
-  !*** ./components/BackTop/Backtop.tsx ***!
+  !*** ./components/Backtop/Backtop.tsx ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -397,7 +397,7 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const classNames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 const Icon_1 = __webpack_require__(/*! ../Icon */ "./components/Icon/index.tsx");
 const renderInRootDom_1 = __webpack_require__(/*! ../utils/renderInRootDom */ "./components/utils/renderInRootDom.tsx");
-const assist_1 = __webpack_require__(/*! ./assist */ "./components/BackTop/assist.tsx");
+const assist_1 = __webpack_require__(/*! ./assist */ "./components/Backtop/assist.tsx");
 /**
  * **返回顶部**-返回页面顶部的操作按钮。
  */
@@ -448,9 +448,9 @@ exports.default = BackTop;
 
 /***/ }),
 
-/***/ "./components/BackTop/assist.tsx":
+/***/ "./components/Backtop/assist.tsx":
 /*!***************************************!*\
-  !*** ./components/BackTop/assist.tsx ***!
+  !*** ./components/Backtop/assist.tsx ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -483,9 +483,9 @@ exports.backTop = (durations, callback) => {
 
 /***/ }),
 
-/***/ "./components/BackTop/index.tsx":
+/***/ "./components/Backtop/index.tsx":
 /*!**************************************!*\
-  !*** ./components/BackTop/index.tsx ***!
+  !*** ./components/Backtop/index.tsx ***!
   \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -493,7 +493,7 @@ exports.backTop = (durations, callback) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Backtop_1 = __webpack_require__(/*! ./Backtop */ "./components/BackTop/Backtop.tsx");
+const Backtop_1 = __webpack_require__(/*! ./Backtop */ "./components/Backtop/Backtop.tsx");
 exports.default = Backtop_1.default;
 
 
@@ -2047,12 +2047,14 @@ class Pop extends react_1.Component {
             const children = ReactDOM.findDOMNode(this.refChildren);
             const { placement = 'top', setPopRect } = this.props;
             const dom = document.getElementsByClassName(this.popId)[0];
-            const domRect = dom.getBoundingClientRect(); // Pop - content -  dom
+            const domRectReal = dom.getBoundingClientRect(); // Pop - content -  dom
             const rect = children.getBoundingClientRect(); // Pop - target - dom
             const pageY = window.pageYOffset; // 当前滚动条y轴偏移量
             const pageX = window.pageXOffset; // 当前滚动条x轴偏移量
             const childrenX = pageX + rect.left; // 子元素x
             const childrenY = pageY + rect.top; // 子元素y
+            // 解决部分浏览器rect不可修改的问题
+            const domRect = { width: domRectReal.width, height: domRectReal.height };
             if (setPopRect) {
                 const popRect = setPopRect(domRect);
                 domRect.width = popRect.width;
@@ -3298,8 +3300,8 @@ const AutoComplete_1 = __webpack_require__(/*! ./AutoComplete */ "./components/A
 exports.AutoComplete = AutoComplete_1.default;
 const Avatar_1 = __webpack_require__(/*! ./Avatar */ "./components/Avatar/index.tsx");
 exports.Avatar = Avatar_1.default;
-const BackTop_1 = __webpack_require__(/*! ./BackTop */ "./components/BackTop/index.tsx");
-exports.BackTop = BackTop_1.default;
+const Backtop_1 = __webpack_require__(/*! ./Backtop */ "./components/Backtop/index.tsx");
+exports.Backtop = Backtop_1.default;
 const Badge_1 = __webpack_require__(/*! ./Badge */ "./components/Badge/index.tsx");
 exports.Badge = Badge_1.default;
 const Breadcrumb_1 = __webpack_require__(/*! ./Breadcrumb */ "./components/Breadcrumb/index.tsx");
@@ -4333,7 +4335,7 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const _1 = __webpack_require__(/*! ../../../../components/ */ "./components/index.tsx");
 const img = __webpack_require__(/*! ./fire.png */ "./docs/pages/BackTop/demo/fire.png");
 function default_1() {
-    return (React.createElement(_1.BackTop, { bottom: 50, right: 20, height: 1, onBackTop: () => alert('到顶了！') },
+    return (React.createElement(_1.Backtop, { bottom: 50, right: 20, height: 1, onBackTop: () => alert('到顶了！') },
         React.createElement("img", { style: { width: 100, height: 100 }, src: img })));
 }
 exports.default = default_1;
@@ -4366,7 +4368,7 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const _1 = __webpack_require__(/*! ../../../../components/ */ "./components/index.tsx");
 function default_1() {
     return (React.createElement("div", null,
-        React.createElement(_1.BackTop, null)));
+        React.createElement(_1.Backtop, null)));
 }
 exports.default = default_1;
 
@@ -6573,6 +6575,7 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const md = __webpack_require__(/*! ./logs.md */ "./docs/pages/Logs/logs.md");
 const v010md = __webpack_require__(/*! ./logs/0.1.0.md */ "./docs/pages/Logs/logs/0.1.0.md");
+const v011md = __webpack_require__(/*! ./logs/0.1.1.md */ "./docs/pages/Logs/logs/0.1.1.md");
 const Markdown_1 = __webpack_require__(/*! ../../components/Markdown */ "./docs/components/Markdown/index.tsx");
 const _1 = __webpack_require__(/*! ../../../components/ */ "./components/index.tsx");
 __webpack_require__(/*! ./index.less */ "./docs/pages/Logs/index.less");
@@ -6582,6 +6585,8 @@ class Logs extends react_1.Component {
             React.createElement(Markdown_1.default, { text: md }),
             React.createElement("div", { style: { marginTop: 40 } },
                 React.createElement(_1.Timeline, null,
+                    React.createElement(_1.Timeline.Item, { time: React.createElement("h2", null, "v 0.1.1") },
+                        React.createElement(Markdown_1.default, { text: v011md })),
                     React.createElement(_1.Timeline.Item, { time: React.createElement("h2", null, "v 0.1.0") },
                         React.createElement(Markdown_1.default, { text: v010md }))))));
     }
@@ -6610,7 +6615,18 @@ module.exports = "### 更新日志"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "`2018-05-04`\r\n  - Icon 图标\r\n  - Breadcrumb 面包屑导航\r\n  - Button 按钮\r\n  - Card 卡片\r\n  - Backtop 回到顶部\r\n  - Alert 提示框\r\n  - Timeline 时间轴\r\n  - Switch 开关\r\n  - Loading 加载\r\n  - Divider 分割线\r\n  - Rate 评分\r\n  - Progress 进度条\r\n  - Avatar 头像\r\n  - Badge 徽标\r\n  - Tag 标签\r\n  - Input 输入框\r\n  - InputNumber 数字输入框\r\n  - Dropdown下拉菜单\r\n  - Pagination分页\r\n  - Steps步骤条\r\n  - AutoComplete自动完成\r\n  - Radio单选框\r\n  - Collapse折叠面板\r\n  - Tooltip文字提示\r\n  - Checkbox 多选框\r\n  - Slider 滑动条\r\n  - Menu 菜单"
+module.exports = "`2018-05-04`\r\n  - 🌟添加组件 Icon 图标\r\n  - 🌟添加组件 Breadcrumb 面包屑导航\r\n  - 🌟添加组件 Button 按钮\r\n  - 🌟添加组件 Card 卡片\r\n  - 🌟添加组件 Backtop 回到顶部\r\n  - 🌟添加组件 Alert 提示框\r\n  - 🌟添加组件 Timeline 时间轴\r\n  - 🌟添加组件 Switch 开关\r\n  - 🌟添加组件 Loading 加载\r\n  - 🌟添加组件 Divider 分割线\r\n  - 🌟添加组件 Rate 评分\r\n  - 🌟添加组件 Progress 进度条\r\n  - 🌟添加组件 Avatar 头像\r\n  - 🌟添加组件 Badge 徽标\r\n  - 🌟添加组件 Tag 标签\r\n  - 🌟添加组件 Input 输入框\r\n  - 🌟添加组件 InputNumber 数字输入框\r\n  - 🌟添加组件 Dropdown下拉菜单\r\n  - 🌟添加组件 Pagination分页\r\n  - 🌟添加组件 Steps步骤条\r\n  - 🌟添加组件 AutoComplete自动完成\r\n  - 🌟添加组件 Radio单选框\r\n  - 🌟添加组件 Collapse折叠面板\r\n  - 🌟添加组件 Tooltip文字提示\r\n  - 🌟添加组件 Checkbox 多选框\r\n  - 🌟添加组件 Slider 滑动条\r\n  - 🌟添加组件 Menu 菜单"
+
+/***/ }),
+
+/***/ "./docs/pages/Logs/logs/0.1.1.md":
+/*!***************************************!*\
+  !*** ./docs/pages/Logs/logs/0.1.1.md ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "`2018-05-05`\r\n  - 🐞 修复`Pop`中部分浏览器`ClientRect`无法设置的BUG\r\n "
 
 /***/ }),
 
@@ -9048,7 +9064,7 @@ class Components extends react_1.Component {
         const preCls = 'wrapper';
         const current = this.props.match.params.name;
         return (React.createElement("div", null,
-            React.createElement(_1.BackTop, null),
+            React.createElement(_1.Backtop, null),
             React.createElement("div", { className: `${preCls}-header` },
                 React.createElement("div", { className: `${preCls}-logo` },
                     React.createElement(react_router_dom_2.Link, { to: '/' }, "Yoshino"))),
@@ -34503,7 +34519,7 @@ module.exports = "import * as React from 'react';\r\nimport { Avatar } from '../
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "import * as React from 'react';\r\nimport { BackTop } from '../../../../components/';\r\nconst img = require('./fire.png');\r\nexport default function () {\r\n  return (\r\n    <BackTop bottom={50} right={20} height={1} onBackTop={() => alert('到顶了！')}>\r\n      <img style={{width: 100, height: 100}} src={img}/>\r\n    </BackTop>\r\n  )\r\n}\r\n"
+module.exports = "import * as React from 'react';\r\nimport { Backtop } from '../../../../components/';\r\nconst img = require('./fire.png');\r\nexport default function () {\r\n  return (\r\n    <Backtop bottom={50} right={20} height={1} onBackTop={() => alert('到顶了！')}>\r\n      <img style={{width: 100, height: 100}} src={img}/>\r\n    </Backtop>\r\n  )\r\n}\r\n"
 
 /***/ }),
 
@@ -34514,7 +34530,7 @@ module.exports = "import * as React from 'react';\r\nimport { BackTop } from '..
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "import * as React from 'react';\r\nimport { BackTop } from '../../../../components/';\r\n\r\nexport default function () {\r\n  return (\r\n    <div>\r\n      <BackTop/>\r\n    </div>\r\n  )\r\n}\r\n"
+module.exports = "import * as React from 'react';\r\nimport { Backtop } from '../../../../components/';\r\n\r\nexport default function () {\r\n  return (\r\n    <div>\r\n      <Backtop/>\r\n    </div>\r\n  )\r\n}\r\n"
 
 /***/ }),
 
