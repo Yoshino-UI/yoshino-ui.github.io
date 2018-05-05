@@ -3611,8 +3611,7 @@ exports.RenderInRootDom = RenderInRootDom;
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const react_router_1 = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
-const createBrowserHistory_1 = __webpack_require__(/*! history/createBrowserHistory */ "./node_modules/history/createBrowserHistory.js");
+const react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 const index_1 = __webpack_require__(/*! ./index */ "./docs/index.tsx");
 const index_2 = __webpack_require__(/*! ./pages/index */ "./docs/pages/index.tsx");
 const Routes = [
@@ -3626,17 +3625,16 @@ const Routes = [
         path: '/components/:name',
     },
 ];
-const history = createBrowserHistory_1.default();
 class App extends react_1.Component {
     render() {
-        return (React.createElement(react_router_1.Router, { history: history },
-            React.createElement(react_router_1.Switch, null,
+        return (React.createElement(react_router_dom_1.HashRouter, null,
+            React.createElement(react_router_dom_1.Switch, null,
                 Routes.map((item, key) => {
-                    return (React.createElement(react_router_1.Route, Object.assign({}, item, { key: key })));
+                    return (React.createElement(react_router_dom_1.Route, Object.assign({}, item, { key: key })));
                 }),
-                React.createElement(react_router_1.Redirect, { from: "/components", to: '/components/yoshino' }),
-                React.createElement(react_router_1.Route, { render: () => {
-                        return React.createElement(react_router_1.Redirect, { to: "/" });
+                React.createElement(react_router_dom_1.Redirect, { from: "/components", to: '/components/yoshino' }),
+                React.createElement(react_router_dom_1.Route, { render: () => {
+                        return React.createElement(react_router_dom_1.Redirect, { to: "/" });
                     } }))));
     }
 }
@@ -9030,8 +9028,8 @@ if(false) {}
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const react_router_1 = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 const react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+const react_router_dom_2 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 const _1 = __webpack_require__(/*! ../../components/ */ "./components/index.tsx");
 __webpack_require__(/*! ./index.less */ "./docs/pages/index.less");
 const menu_1 = __webpack_require__(/*! ./menu */ "./docs/pages/menu.tsx");
@@ -9053,7 +9051,7 @@ class Components extends react_1.Component {
             React.createElement(_1.BackTop, null),
             React.createElement("div", { className: `${preCls}-header` },
                 React.createElement("div", { className: `${preCls}-logo` },
-                    React.createElement(react_router_dom_1.Link, { to: '/' }, "Yoshino"))),
+                    React.createElement(react_router_dom_2.Link, { to: '/' }, "Yoshino"))),
             React.createElement("div", { className: `${preCls}-wrapper` },
                 React.createElement("div", { className: `${preCls}-menu` },
                     React.createElement(_1.Menu, { style: { width: 256 }, defaultActiveKey: current, defaultOpenKeys: ['components'] },
@@ -9067,12 +9065,12 @@ class Components extends react_1.Component {
                             })));
                         })))),
                 React.createElement("div", { className: `${preCls}-container` },
-                    React.createElement(react_router_1.Switch, null,
+                    React.createElement(react_router_dom_1.Switch, null,
                         routes_1.default.map((item, key) => {
-                            return (React.createElement(react_router_1.Route, Object.assign({}, item, { path: `${item.path}`, key: key, exact: true })));
+                            return (React.createElement(react_router_dom_1.Route, Object.assign({}, item, { path: `${item.path}`, key: key, exact: true })));
                         }),
-                        React.createElement(react_router_1.Route, { render: () => {
-                                return React.createElement(react_router_1.Redirect, { to: "/components/" });
+                        React.createElement(react_router_dom_1.Route, { render: () => {
+                                return React.createElement(react_router_dom_1.Redirect, { to: "/components/" });
                             } })))),
             React.createElement("div", { className: `${preCls}-footer` })));
     }
@@ -53209,63 +53207,6 @@ Switch.propTypes = {
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Switch);
-
-/***/ }),
-
-/***/ "./node_modules/react-router/es/index.js":
-/*!***********************************************!*\
-  !*** ./node_modules/react-router/es/index.js ***!
-  \***********************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, matchPath, withRouter */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MemoryRouter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemoryRouter */ "./node_modules/react-router/es/MemoryRouter.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return _MemoryRouter__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var _Prompt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prompt */ "./node_modules/react-router/es/Prompt.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return _Prompt__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-/* harmony import */ var _Redirect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Redirect */ "./node_modules/react-router/es/Redirect.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return _Redirect__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _Route__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Route */ "./node_modules/react-router/es/Route.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return _Route__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-/* harmony import */ var _Router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Router */ "./node_modules/react-router/es/Router.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return _Router__WEBPACK_IMPORTED_MODULE_4__["default"]; });
-
-/* harmony import */ var _StaticRouter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StaticRouter */ "./node_modules/react-router/es/StaticRouter.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return _StaticRouter__WEBPACK_IMPORTED_MODULE_5__["default"]; });
-
-/* harmony import */ var _Switch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Switch */ "./node_modules/react-router/es/Switch.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return _Switch__WEBPACK_IMPORTED_MODULE_6__["default"]; });
-
-/* harmony import */ var _matchPath__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./matchPath */ "./node_modules/react-router/es/matchPath.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return _matchPath__WEBPACK_IMPORTED_MODULE_7__["default"]; });
-
-/* harmony import */ var _withRouter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./withRouter */ "./node_modules/react-router/es/withRouter.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return _withRouter__WEBPACK_IMPORTED_MODULE_8__["default"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /***/ }),
 
