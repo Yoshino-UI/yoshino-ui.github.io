@@ -129,10 +129,7 @@ class Alert extends react_1.Component {
         const clsName = classNames(preCls, alertCls, className);
         return (React.createElement(Transition_1.default, { timeout: duration, in: show, unmountOnExit: true, onExited: () => {
                 if (this.props.onClose) {
-                    // 延迟100ms是为了避免阻塞transition unmount
-                    setTimeout(() => {
-                        this.props.onClose();
-                    }, 100);
+                    this.props.onClose();
                 }
             } }, (state) => (React.createElement("div", Object.assign({ className: clsName, style: Object.assign({}, style, defaultStyle, transitionStyles[state]) }, otherProps),
             React.createElement("span", { style: { display: showIcon ? 'inline-block' : 'none' }, className: `${preCls}-icon` }, icon ? icon : (React.createElement(Icon_1.default, { type: defaultIcon[type] }))),
@@ -143,7 +140,6 @@ class Alert extends react_1.Component {
     }
 }
 Alert.defaultProps = {
-    type: 'info',
     showIcon: false,
     closable: false,
 };
@@ -2486,7 +2482,6 @@ class Ripple extends react_1.Component {
     }
 }
 Ripple.defaultProps = {
-    color: '#4285f4',
     opacity: 0.3,
     diameter: 10,
 };
@@ -3916,6 +3911,184 @@ class Index extends react_1.Component {
     }
 }
 exports.default = Index;
+;
+
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/api.tsx":
+/*!**********************************!*\
+  !*** ./docs/pages/Alert/api.tsx ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = [
+    {
+        title: "API",
+        json: [
+            {
+                props: "type",
+                intro: "提示类型",
+                type: "'success' | 'info' | 'warning' | 'error'",
+                defaultValue: "-",
+            },
+            {
+                props: "closable",
+                intro: "是否支持关闭",
+                type: "boolean",
+                defaultValue: "false",
+            },
+            {
+                props: "showIcon",
+                intro: "是否显示图标",
+                type: "boolean",
+                defaultValue: "false",
+            },
+            {
+                props: "icon",
+                intro: "自定义图标",
+                type: "ReactNode",
+                defaultValue: "-",
+            },
+            {
+                props: "title",
+                intro: "标题",
+                type: "ReactNode | string",
+                defaultValue: "-",
+            },
+            {
+                props: "onClose",
+                intro: "关闭回调",
+                type: "() => void",
+                defaultValue: "-",
+            },
+        ]
+    }
+];
+
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/demo/alertCustom.md":
+/*!**********************************************!*\
+  !*** ./docs/pages/Alert/demo/alertCustom.md ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#### 带图标\n可以通过`icon`设置图标，并且可以自定义`onClose`回调。\n\n"
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/demo/alertCustom.tsx":
+/*!***********************************************!*\
+  !*** ./docs/pages/Alert/demo/alertCustom.tsx ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const _1 = __webpack_require__(/*! ../../../../components/ */ "./components/index.tsx");
+function default_1() {
+    return (React.createElement("div", null,
+        React.createElement(_1.Alert, { type: "success", showIcon: true, title: "\u6210\u529F\u63D0\u793A\u6587\u6848", closable: true, onClose: () => alert('关闭了') },
+            React.createElement("span", null, "\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848\u6210\u529F\u63D0\u793A\u6587\u6848")),
+        React.createElement(_1.Alert, { type: "info", icon: React.createElement(_1.Icon, { type: "paper-airplane" }), showIcon: true, closable: true, title: "\u81EA\u5B9A\u4E49\u6587\u6848" }),
+        React.createElement(_1.Alert, { type: "info", showIcon: true, title: "\u6D88\u606F\u63D0\u793A\u6587\u6848" }),
+        React.createElement(_1.Alert, { type: "warning", showIcon: true, title: "\u8B66\u544A\u63D0\u793A\u6587\u6848" }),
+        React.createElement(_1.Alert, { type: "error", showIcon: true, title: "\u9519\u8BEF\u63D0\u793A\u6587\u6848" })));
+}
+exports.default = default_1;
+
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/demo/alertDemo.md":
+/*!********************************************!*\
+  !*** ./docs/pages/Alert/demo/alertDemo.md ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#### 基本使用\n简单的基本使用，一共四种Ttype，`success`、 `info`、`warning`、`error`。\n"
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/demo/alertDemo.tsx":
+/*!*********************************************!*\
+  !*** ./docs/pages/Alert/demo/alertDemo.tsx ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const _1 = __webpack_require__(/*! ../../../../components/ */ "./components/index.tsx");
+function default_1() {
+    return (React.createElement("div", null,
+        React.createElement(_1.Alert, { type: "success", title: "\u6210\u529F\u63D0\u793A\u6587\u6848" }),
+        React.createElement(_1.Alert, { type: "info", title: "\u6D88\u606F\u63D0\u793A\u6587\u6848" }),
+        React.createElement(_1.Alert, { type: "warning", title: "\u8B66\u544A\u63D0\u793A\u6587\u6848" }),
+        React.createElement(_1.Alert, { type: "error", title: "\u9519\u8BEF\u63D0\u793A\u6587\u6848" })));
+}
+exports.default = default_1;
+
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/index.md":
+/*!***********************************!*\
+  !*** ./docs/pages/Alert/index.md ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "## Alert 提示\n用于页面提示用户一些需要关注的信息。\n\n## 代码演示\n"
+
+/***/ }),
+
+/***/ "./docs/pages/Alert/index.tsx":
+/*!************************************!*\
+  !*** ./docs/pages/Alert/index.tsx ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const md = __webpack_require__(/*! ./index.md */ "./docs/pages/Alert/index.md");
+const _1 = __webpack_require__(/*! ../../components/Markdown/ */ "./docs/components/Markdown/index.tsx");
+const _2 = __webpack_require__(/*! ../../components/CodeBox/ */ "./docs/components/CodeBox/index.tsx");
+const _3 = __webpack_require__(/*! ../../components/ApiBox/ */ "./docs/components/ApiBox/index.tsx");
+const api_1 = __webpack_require__(/*! ./api */ "./docs/pages/Alert/api.tsx");
+const alertDemo_1 = __webpack_require__(/*! ./demo/alertDemo */ "./docs/pages/Alert/demo/alertDemo.tsx");
+const alertDemoMd = __webpack_require__(/*! ./demo/alertDemo.md */ "./docs/pages/Alert/demo/alertDemo.md");
+const alertDemoCode = __webpack_require__(/*! raw-loader!./demo/alertDemo */ "./node_modules/raw-loader/index.js!./docs/pages/Alert/demo/alertDemo.tsx");
+const alertCustom_1 = __webpack_require__(/*! ./demo/alertCustom */ "./docs/pages/Alert/demo/alertCustom.tsx");
+const alertCustomMd = __webpack_require__(/*! ./demo/alertCustom.md */ "./docs/pages/Alert/demo/alertCustom.md");
+const alertCustomCode = __webpack_require__(/*! raw-loader!./demo/alertCustom */ "./node_modules/raw-loader/index.js!./docs/pages/Alert/demo/alertCustom.tsx");
+class AlertPage extends react_1.Component {
+    render() {
+        return (React.createElement("div", null,
+            React.createElement(_1.default, { text: md }),
+            React.createElement(_2.default, { text: alertDemoMd, demo: React.createElement(alertDemo_1.default, null), code: alertDemoCode }),
+            React.createElement(_2.default, { text: alertCustomMd, demo: React.createElement(alertCustom_1.default, null), code: alertCustomCode }),
+            React.createElement(_3.default, { api: api_1.default })));
+    }
+}
+exports.default = AlertPage;
 ;
 
 
@@ -7556,6 +7729,177 @@ exports.default = RatePage;
 
 /***/ }),
 
+/***/ "./docs/pages/Ripple/api.tsx":
+/*!***********************************!*\
+  !*** ./docs/pages/Ripple/api.tsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = [
+    {
+        title: "API",
+        json: [
+            {
+                props: "color",
+                intro: "波纹颜色",
+                type: "string",
+                defaultValue: "-",
+            },
+            {
+                props: "opacity",
+                intro: "透明度",
+                type: "number",
+                defaultValue: "0.3",
+            },
+            {
+                props: "diameter",
+                intro: "波纹半径",
+                type: "number",
+                defaultValue: "10",
+            },
+        ]
+    }
+];
+
+
+/***/ }),
+
+/***/ "./docs/pages/Ripple/demo/rippleCustom.md":
+/*!************************************************!*\
+  !*** ./docs/pages/Ripple/demo/rippleCustom.md ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#### 配合其他组件使用\n推荐配合`button`使用，可以提高交互体验。\n"
+
+/***/ }),
+
+/***/ "./docs/pages/Ripple/demo/rippleCustom.tsx":
+/*!*************************************************!*\
+  !*** ./docs/pages/Ripple/demo/rippleCustom.tsx ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const _1 = __webpack_require__(/*! ../../../../components/ */ "./components/index.tsx");
+function default_1() {
+    return (React.createElement("div", null,
+        React.createElement(_1.Ripple, { color: "red", opacity: 0.6 },
+            React.createElement(_1.Button, { type: "primary" },
+                React.createElement(_1.Icon, { type: "play" }),
+                "\u64AD\u653E")),
+        React.createElement(_1.Ripple, { color: "blue" },
+            React.createElement(_1.Button, { type: "primary" },
+                React.createElement(_1.Icon, { type: "pause" }),
+                "\u6682\u505C")),
+        React.createElement(_1.Ripple, { color: "yellow" },
+            React.createElement(_1.Button, { type: "primary" },
+                React.createElement(_1.Icon, { type: "skip-backward" }),
+                "\u4E0A\u4E00\u9996")),
+        React.createElement(_1.Ripple, { color: "green" },
+            React.createElement(_1.Button, { type: "primary" },
+                "\u4E0B\u4E00\u9996",
+                React.createElement(_1.Icon, { type: "skip-forward" })))));
+}
+exports.default = default_1;
+
+
+/***/ }),
+
+/***/ "./docs/pages/Ripple/demo/rippleDemo.md":
+/*!**********************************************!*\
+  !*** ./docs/pages/Ripple/demo/rippleDemo.md ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "#### 简单的使用\n简单的波纹特效使用\n"
+
+/***/ }),
+
+/***/ "./docs/pages/Ripple/demo/rippleDemo.tsx":
+/*!***********************************************!*\
+  !*** ./docs/pages/Ripple/demo/rippleDemo.tsx ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const _1 = __webpack_require__(/*! ../../../../components/ */ "./components/index.tsx");
+function default_1() {
+    return (React.createElement("div", null,
+        React.createElement(_1.Ripple, { style: { width: '200px' }, color: "red" },
+            React.createElement(_1.Card, { title: "\u6807\u9898", extra: (React.createElement("div", null,
+                    React.createElement("span", null, "\u66F4\u591A"),
+                    React.createElement(_1.Icon, { type: "more" }))), border: true, shadow: true },
+                React.createElement("div", null, "\u6CE2\u7EB9\u5305\u88F9\u7684card")))));
+}
+exports.default = default_1;
+
+
+/***/ }),
+
+/***/ "./docs/pages/Ripple/index.md":
+/*!************************************!*\
+  !*** ./docs/pages/Ripple/index.md ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "## Ripple 波纹\n用于包裹子组件，点击后有波纹特效。\n\n## 代码演示\n"
+
+/***/ }),
+
+/***/ "./docs/pages/Ripple/index.tsx":
+/*!*************************************!*\
+  !*** ./docs/pages/Ripple/index.tsx ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const md = __webpack_require__(/*! ./index.md */ "./docs/pages/Ripple/index.md");
+const _1 = __webpack_require__(/*! ../../components/Markdown/ */ "./docs/components/Markdown/index.tsx");
+const _2 = __webpack_require__(/*! ../../components/CodeBox/ */ "./docs/components/CodeBox/index.tsx");
+const _3 = __webpack_require__(/*! ../../components/ApiBox/ */ "./docs/components/ApiBox/index.tsx");
+const api_1 = __webpack_require__(/*! ./api */ "./docs/pages/Ripple/api.tsx");
+const rippleDemo_1 = __webpack_require__(/*! ./demo/rippleDemo */ "./docs/pages/Ripple/demo/rippleDemo.tsx");
+const rippleDemoMd = __webpack_require__(/*! ./demo/rippleDemo.md */ "./docs/pages/Ripple/demo/rippleDemo.md");
+const rippleDemoCode = __webpack_require__(/*! raw-loader!./demo/rippleDemo */ "./node_modules/raw-loader/index.js!./docs/pages/Ripple/demo/rippleDemo.tsx");
+const rippleCustom_1 = __webpack_require__(/*! ./demo/rippleCustom */ "./docs/pages/Ripple/demo/rippleCustom.tsx");
+const rippleCustomMd = __webpack_require__(/*! ./demo/rippleCustom.md */ "./docs/pages/Ripple/demo/rippleCustom.md");
+const rippleCustomCode = __webpack_require__(/*! raw-loader!./demo/rippleCustom */ "./node_modules/raw-loader/index.js!./docs/pages/Ripple/demo/rippleCustom.tsx");
+class RipplePage extends react_1.Component {
+    render() {
+        return (React.createElement("div", null,
+            React.createElement(_1.default, { text: md }),
+            React.createElement(_2.default, { text: rippleDemoMd, demo: React.createElement(rippleDemo_1.default, null), code: rippleDemoCode }),
+            React.createElement(_2.default, { text: rippleCustomMd, demo: React.createElement(rippleCustom_1.default, null), code: rippleCustomCode }),
+            React.createElement(_3.default, { api: api_1.default })));
+    }
+}
+exports.default = RipplePage;
+;
+
+
+/***/ }),
+
 /***/ "./docs/pages/Slider/api.tsx":
 /*!***********************************!*\
   !*** ./docs/pages/Slider/api.tsx ***!
@@ -9249,6 +9593,10 @@ exports.default = [
         keyId: 'feedback',
         children: [
             {
+                name: 'Alert(提示)',
+                keyId: 'alert',
+            },
+            {
                 name: 'Loading(加载中)',
                 keyId: 'loading',
             },
@@ -9269,6 +9617,16 @@ exports.default = [
             {
                 name: 'Divider(分割线)',
                 keyId: 'divider',
+            },
+        ],
+    },
+    {
+        name: '特效组件',
+        keyId: 'effects',
+        children: [
+            {
+                name: 'Ripple(波纹)',
+                keyId: 'ripple',
             },
         ],
     },
@@ -9316,6 +9674,8 @@ const Loading_1 = __webpack_require__(/*! ./Loading */ "./docs/pages/Loading/ind
 const Progress_1 = __webpack_require__(/*! ./Progress */ "./docs/pages/Progress/index.tsx");
 const BackTop_1 = __webpack_require__(/*! ./BackTop */ "./docs/pages/BackTop/index.tsx");
 const Divider_1 = __webpack_require__(/*! ./Divider */ "./docs/pages/Divider/index.tsx");
+const Ripple_1 = __webpack_require__(/*! ./Ripple */ "./docs/pages/Ripple/index.tsx");
+const Alert_1 = __webpack_require__(/*! ./Alert */ "./docs/pages/Alert/index.tsx");
 exports.default = [
     {
         component: Yoshino_1.default,
@@ -9432,7 +9792,15 @@ exports.default = [
     {
         component: Divider_1.default,
         path: '/components/divider',
-    }
+    },
+    {
+        component: Ripple_1.default,
+        path: '/components/ripple',
+    },
+    {
+        component: Alert_1.default,
+        path: '/components/alert',
+    },
 ];
 
 
@@ -34496,6 +34864,28 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./docs/pages/Alert/demo/alertCustom.tsx":
+/*!*************************************************************************!*\
+  !*** ./node_modules/raw-loader!./docs/pages/Alert/demo/alertCustom.tsx ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "import * as React from 'react';\nimport { Alert, Icon } from '../../../../components/';\n\nexport default function () {\n  return (\n    <div>\n      <Alert\n        type=\"success\"\n        showIcon\n        title=\"成功提示文案\"\n        closable\n        onClose={() => alert('关闭了')}\n      >\n        <span>成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案</span>\n      </Alert>\n      <Alert\n        type=\"info\"\n        icon={<Icon type=\"paper-airplane\"/>}\n        showIcon\n        closable\n        title=\"自定义文案\"\n      />\n      <Alert type=\"info\" showIcon title=\"消息提示文案\"/>\n      <Alert type=\"warning\" showIcon title=\"警告提示文案\"/>\n      <Alert type=\"error\" showIcon title=\"错误提示文案\"/>\n    </div>\n  )\n}\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./docs/pages/Alert/demo/alertDemo.tsx":
+/*!***********************************************************************!*\
+  !*** ./node_modules/raw-loader!./docs/pages/Alert/demo/alertDemo.tsx ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "import * as React from 'react';\nimport { Alert } from '../../../../components/';\n\nexport default function () {\n  return (\n    <div>\n      <Alert type=\"success\" title=\"成功提示文案\"/>\n      <Alert type=\"info\" title=\"消息提示文案\"/>\n      <Alert type=\"warning\" title=\"警告提示文案\"/>\n      <Alert type=\"error\" title=\"错误提示文案\"/>\n    </div>\n  )\n}\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./docs/pages/AutoComplete/demo/autoCompleteDemo.tsx":
 /*!*************************************************************************************!*\
   !*** ./node_modules/raw-loader!./docs/pages/AutoComplete/demo/autoCompleteDemo.tsx ***!
@@ -34922,6 +35312,28 @@ module.exports = "import * as React from 'react';\r\nimport { Rate, Icon} from '
 /***/ (function(module, exports) {
 
 module.exports = "import * as React from 'react';\r\nimport { Rate } from '../../../../components/';\r\n\r\nexport default function () {\r\n  return (\r\n    <div>\r\n      <Rate value={2}/>\r\n    </div>\r\n  )\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./docs/pages/Ripple/demo/rippleCustom.tsx":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./docs/pages/Ripple/demo/rippleCustom.tsx ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "import * as React from 'react';\nimport { Ripple, Icon, Button } from '../../../../components/';\n\nexport default function () {\n  return (\n    <div>\n      <Ripple color=\"red\" opacity={0.6}><Button type=\"primary\"><Icon type=\"play\"/>播放</Button></Ripple>\n      <Ripple color=\"blue\"><Button type=\"primary\"><Icon type=\"pause\"/>暂停</Button></Ripple>\n      <Ripple color=\"yellow\"><Button type=\"primary\"><Icon type=\"skip-backward\"/>上一首</Button></Ripple>\n      <Ripple color=\"green\"><Button type=\"primary\">下一首<Icon type=\"skip-forward\"/></Button></Ripple>\n    </div>\n  )\n}\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./docs/pages/Ripple/demo/rippleDemo.tsx":
+/*!*************************************************************************!*\
+  !*** ./node_modules/raw-loader!./docs/pages/Ripple/demo/rippleDemo.tsx ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "import * as React from 'react';\nimport { Ripple, Card, Icon } from '../../../../components/';\n\nexport default function () {\n  return (\n    <div>\n    <Ripple style={{width: '200px'}}color=\"red\">\n      <Card \n        title=\"标题\"\n        extra={(\n        <div><span>更多</span><Icon type=\"more\"/></div>\n        )}\n        border\n        shadow\n      >\n        <div>波纹包裹的card</div>\n      </Card>\n    </Ripple>\n  </div>\n  )\n}\n"
 
 /***/ }),
 
